@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gobang-AI", "Gobang-AI\Gobang-AI.vcxproj", "{3026DC64-C960-43AC-9966-11AFD307E493}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "五子棋框架", "五子棋框架", "{CFC06BE4-9B48-4A7E-9153-11CCC638120E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "函数模板", "函数模板", "{A0190ADD-D0DF-40A5-B118-786C55CF63F1}"
+	ProjectSection(SolutionItems) = preProject
+		..\五子棋框架\函数模板\createmoves.txt = ..\五子棋框架\函数模板\createmoves.txt
+		..\五子棋框架\函数模板\define.txt = ..\五子棋框架\函数模板\define.txt
+		..\五子棋框架\函数模板\makemove.txt = ..\五子棋框架\函数模板\makemove.txt
+		..\五子棋框架\函数模板\searchmove.txt = ..\五子棋框架\函数模板\searchmove.txt
+		..\五子棋框架\函数模板\start.txt = ..\五子棋框架\函数模板\start.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "头文件", "头文件", "{DE7D7748-C8B9-41C0-B11A-4AE3D15E83C5}"
+	ProjectSection(SolutionItems) = preProject
+		..\五子棋框架\头文件\createmoves.h = ..\五子棋框架\头文件\createmoves.h
+		..\五子棋框架\头文件\define.h = ..\五子棋框架\头文件\define.h
+		..\五子棋框架\头文件\evaluate.h = ..\五子棋框架\头文件\evaluate.h
+		..\五子棋框架\头文件\makemove.h = ..\五子棋框架\头文件\makemove.h
+		..\五子棋框架\头文件\printchessboard.h = ..\五子棋框架\头文件\printchessboard.h
+		..\五子棋框架\头文件\searchmove.h = ..\五子棋框架\头文件\searchmove.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "源文件", "源文件", "{CCCD60F9-40BE-456D-84B6-50D35092D65A}"
+	ProjectSection(SolutionItems) = preProject
+		..\五子棋框架\源文件\createmoves.cpp = ..\五子棋框架\源文件\createmoves.cpp
+		..\五子棋框架\源文件\define.cpp = ..\五子棋框架\源文件\define.cpp
+		..\五子棋框架\源文件\evaluate.cpp = ..\五子棋框架\源文件\evaluate.cpp
+		..\五子棋框架\源文件\gameover.cpp = ..\五子棋框架\源文件\gameover.cpp
+		..\五子棋框架\源文件\makemove.cpp = ..\五子棋框架\源文件\makemove.cpp
+		..\五子棋框架\源文件\printchessboard.cpp = ..\五子棋框架\源文件\printchessboard.cpp
+		..\五子棋框架\源文件\searchmove.cpp = ..\五子棋框架\源文件\searchmove.cpp
+		..\五子棋框架\源文件\start.cpp = ..\五子棋框架\源文件\start.cpp
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3026DC64-C960-43AC-9966-11AFD307E493}.Debug|x64.ActiveCfg = Debug|x64
+		{3026DC64-C960-43AC-9966-11AFD307E493}.Debug|x64.Build.0 = Debug|x64
+		{3026DC64-C960-43AC-9966-11AFD307E493}.Debug|x86.ActiveCfg = Debug|Win32
+		{3026DC64-C960-43AC-9966-11AFD307E493}.Debug|x86.Build.0 = Debug|Win32
+		{3026DC64-C960-43AC-9966-11AFD307E493}.Release|x64.ActiveCfg = Release|x64
+		{3026DC64-C960-43AC-9966-11AFD307E493}.Release|x64.Build.0 = Release|x64
+		{3026DC64-C960-43AC-9966-11AFD307E493}.Release|x86.ActiveCfg = Release|Win32
+		{3026DC64-C960-43AC-9966-11AFD307E493}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A0190ADD-D0DF-40A5-B118-786C55CF63F1} = {CFC06BE4-9B48-4A7E-9153-11CCC638120E}
+		{DE7D7748-C8B9-41C0-B11A-4AE3D15E83C5} = {CFC06BE4-9B48-4A7E-9153-11CCC638120E}
+		{CCCD60F9-40BE-456D-84B6-50D35092D65A} = {CFC06BE4-9B48-4A7E-9153-11CCC638120E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {712DA0DA-E236-4138-B62A-FF4C6088EFC7}
+	EndGlobalSection
+EndGlobal
