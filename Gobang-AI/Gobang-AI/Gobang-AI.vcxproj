@@ -151,37 +151,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\VS\renju\createmoves.h" />
-    <ClInclude Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\VS\renju\define.h" />
-    <ClInclude Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\VS\renju\evaluate.h" />
-    <ClInclude Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\VS\renju\makemove.h" />
-    <ClInclude Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\VS\renju\printchessboard.h" />
-    <ClInclude Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\VS\renju\searchmove.h" />
-    <ClInclude Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\头文件\createmoves.h" />
-    <ClInclude Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\头文件\define.h" />
-    <ClInclude Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\头文件\evaluate.h" />
-    <ClInclude Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\头文件\makemove.h" />
-    <ClInclude Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\头文件\printchessboard.h" />
-    <ClInclude Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\头文件\searchmove.h" />
-    <ClInclude Include="pch.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\VS\renju\createmoves.cpp" />
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\VS\renju\define.cpp" />
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\VS\renju\evaluate.cpp" />
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\VS\renju\gameover.cpp" />
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\VS\renju\makemove.cpp" />
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\VS\renju\printchessboard.cpp" />
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\VS\renju\searchmove.cpp" />
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\VS\renju\start.cpp" />
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\源文件\createmoves.cpp" />
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\源文件\define.cpp" />
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\源文件\evaluate.cpp" />
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\源文件\gameover.cpp" />
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\源文件\makemove.cpp" />
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\源文件\printchessboard.cpp" />
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\源文件\searchmove.cpp" />
-    <ClCompile Include="G:\QQ File\1390435486\五子棋框架\五子棋框架\源文件\start.cpp" />
     <ClCompile Include="Gobang-AI.cpp" />
   </ItemGroup>
   <ItemGroup>
