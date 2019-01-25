@@ -1,0 +1,13 @@
+#include "define.h"
+
+void makeMove(struct point node, int color)
+{
+	chessboard[node.x][node.y]=color;//Âä×Ó
+
+}
+
+void unMakeMove(struct point node, int color)
+{
+	//³·ÏúÂä×Ó
+	chessboard[node.x][node.y]=0;
+}

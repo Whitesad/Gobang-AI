@@ -1,0 +1,7 @@
+#include "define.h"
+
+
+int chessBoard[GRID_NUM][GRID_NUM];//定义
+
+point zhaofa[2][300];//记录所有招法
+point bestzhaofa;//记录最好的招法

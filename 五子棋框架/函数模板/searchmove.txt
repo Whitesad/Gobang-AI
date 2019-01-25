@@ -1,0 +1,36 @@
+#include "define.h"
+#include "createmoves.h"
+#include "makemove.h"
+
+int alphabeta(int depth, int alpha, int beta, int player)
+{
+
+	//搜索主体
+	if(depth==0) return Evalute();
+	createmove()//找所有招法
+	foreach Move
+	{
+		Makemove();
+		val=-Alphabeta(depth-1,-beta,-alpha,3-player);
+		Unmakemove();
+		if(val>=beta) return beta;
+		if(val>alpha)
+		{
+			if(depth==maxdep)
+			{
+				记录此位置为最好招法
+				bestzhaofa=zhaofa[maxdep][i]
+			}
+			alpha=val;
+		}
+	}
+	return alpha;
+}
+
+int searchGoodmove(int player)			//得到招法，如果超时直接返回无效解。
+{
+	//这里是alphabeta的第一层
+	alphabeta（maxdep,-INF,INF,player）;
+	Makemove（bestzhaofa）;//落子在最好的招法
+	return 0;
+}

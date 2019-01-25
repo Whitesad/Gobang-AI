@@ -1,0 +1,13 @@
+#include "define.h"
+
+void createMoves(int player)		//生成招法
+{
+
+	//生成招法代码
+	//棋盘上的空白点均为可行招法
+	for（）//遍历棋盘
+	{
+		if（某点没有落子）
+		将该位置计入招法数组中
+	}
+}
