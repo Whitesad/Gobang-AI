@@ -15,3 +15,5 @@
 ·将Kizuna更名为Kristina
 
 ·白天做完了evaluate函数，用贪心实现了一层搜索的五子棋程序
+
+·晚上继续完善了evaluate函数……贪心真好玩

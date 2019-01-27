@@ -1,23 +1,29 @@
 #include "define.h"
+#include "Christina.h"
 double PosValue[15][15] =
 {
 {1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0},
-{1.0,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.0},
-{1.0,1.5,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,1.5,1.0},
-{1.0,1.5,2.0,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,2.0,1.5,1.0},
-{1.0,1.5,2.0,3.5,4.0,4.0,4.0,4.0,4.0,4.0,4.0,3.5,2.0,1.5,1.0},
-{1.0,1.5,2.0,3.5,4.0,4.5,4.5,4.5,4.5,4.5,4.0,3.5,2.0,1.5,1.0},
-{1.0,1.5,2.0,3.5,4.0,4.5,5.5,5.5,5.5,4.5,4.0,3.5,2.0,1.5,1.0},
-{1.0,1.5,2.0,3.5,4.0,4.5,5.5,7.0,5.5,4.5,4.0,3.5,2.0,1.5,1.0},
-{1.0,1.5,2.0,3.5,4.0,4.5,5.5,5.5,5.5,4.5,4.0,3.5,2.0,1.5,1.0},
-{1.0,1.5,2.0,3.5,4.0,4.5,4.5,4.5,4.5,4.5,4.0,3.5,2.0,1.5,1.0},
-{1.0,1.5,2.0,3.5,4.0,4.0,4.0,4.0,4.0,4.0,4.0,3.5,2.0,1.5,1.0},
-{1.0,1.5,2.0,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,2.0,1.5,1.0},
-{1.0,1.5,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,1.5,1.0},
-{1.0,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.0},
+{1.0,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.0},
+{1.0,1.3,1.8,1.8,1.8,1.8,1.8,1.8,1.8,1.8,1.8,1.8,1.8,1.3,1.0},
+{1.0,1.3,1.8,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,1.8,1.3,1.0},
+{1.0,1.3,1.8,2.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,2.5,1.8,1.3,1.0},
+{1.0,1.3,1.8,2.5,3.5,4.5,4.5,4.5,4.5,4.5,3.5,2.5,1.8,1.3,1.0},
+{1.0,1.3,1.8,2.5,3.5,4.5,5.5,5.5,5.5,4.5,3.5,2.5,1.8,1.3,1.0},
+{1.0,1.3,1.8,2.5,3.5,4.5,5.5,6.0,5.5,4.5,3.5,2.5,1.8,1.3,1.0},
+{1.0,1.3,1.8,2.5,3.5,4.5,5.5,5.5,5.5,4.5,3.5,2.5,1.8,1.3,1.0},
+{1.0,1.3,1.8,2.5,3.5,4.5,4.5,4.5,4.5,4.5,3.5,2.5,1.8,1.3,1.0},
+{1.0,1.3,1.8,2.5,3.5,3.5,3.5,3.5,3.5,3.5,3.5,2.5,1.8,1.3,1.0},
+{1.0,1.3,1.8,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,1.8,1.3,1.0},
+{1.0,1.3,1.8,1.8,1.8,1.8,1.8,1.8,1.8,1.8,1.8,1.8,1.8,1.3,1.0},
+{1.0,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.0},
 {1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0}
 };
 extern Map Chess_board;
+long long MAX(long long A, long long B)
+{
+	return A > B ? A : B;
+}
+//struct point 区
 void point::get(void)
 {
 	puts("Input your step(r,c)");
@@ -27,6 +33,68 @@ void point::get(void)
 		puts("Illegal input!Try again:");
 		num = scanf("%d %d", &x, &y);
 	}
+}
+//sstruct situation 区
+long long situation::add(long long num) {
+	switch (num)
+	{
+	case WIN5:win5++; break;
+	case ALIVE2:alive2++; break;
+	case ALIVE3:alive3++; break;
+	case ALIVE4:alive4++; break;
+	case DIE3:die3++; break;
+	case DIE4:die4++; break;
+	case LOWDIE4:lowdie4++; break;
+	case TIAO3:tiao3++; break;
+	case DIE2:die2++; break;
+	case LOWALIVE2:lowalive2++; break;
+	default:
+		break;
+	}
+	return num;
+}
+long long situation::weight(void)
+{
+	long long result=0;
+	if (win5 >= 1)
+		result = MAX(result, LevelOne);//赢5
+
+	if (alive4 >= 1 || die4 >= 2 || (die4 >= 1 && alive3 >= 1))
+		result = MAX(result, Leveltwo);//活4 双死4 死4活3
+
+	if (alive3 >= 2)
+		result = MAX(result, Levelthree);//双活3
+
+	if (die3 >= 1 && alive3 >= 1)
+		result = MAX(result, Levelfour);//死3高级活3
+
+	if (die4 >= 1)
+		result = MAX(result, Levelfive);//高级死4
+
+	if (lowdie4 >= 1)
+		result = MAX(result, Levelsix);//低级死4
+
+	if (alive3 >= 1)
+		result = MAX(result, Levelseven);//单活3
+
+	if (tiao3 >= 1)
+		result = MAX(result, LevelEight);//跳活3
+
+	if (alive2 >= 2)
+		result = MAX(result, LevelNine);//双活2
+
+	if (alive2 >= 1)
+		result = MAX(result, LevelTen);//活2
+
+	if (lowalive2 >= 1)
+		result = MAX(result, LevelEleven);//低级活2
+
+	if (die3 >= 1)
+		result = MAX(result, LevelTwelve);//死3
+
+	if (die2 >= 1)
+		result = MAX(result, LevelThirteen);//死2
+	return LevelFourteen;//没有威胁
 }
 void Gobang_AI::getchess(struct point chess)
 {
@@ -111,17 +179,7 @@ void Gobang_AI::getchess(point &step,int fr, int fc, int *chess)
 	}
 }
 long long Gobang_AI::cal(point &step,int R, int L, int count,int *RIGHT,int *LEFT) {
-#define WIN5 100000
-#define ALIVE4 10000
-#define DIE4 500
-#define DIE3  1000
-#define LOWDIE4 400
-#define ALIVE3 1000
-#define ALIVE2 10
-#define NOTHREAT 1
-#define TIAO3 90
-#define DIE2 2
-#define LOWALIVE2 9
+
 
 	int L1 = LEFT[0], L2 = LEFT[1], L3 = LEFT[2];
 	int R1 = RIGHT[0], R2 = RIGHT[1], R3 = RIGHT[2];
@@ -140,7 +198,8 @@ long long Gobang_AI::cal(point &step,int R, int L, int count,int *RIGHT,int *LEF
 			return DIE4;//死四
 	}
 
-	if (count == 3) {//中心线3连
+	if (count == 3) 
+	{//中心线3连
 
 		if (L == NONE && R == NONE)//两边断开位置均空
 		{
@@ -157,7 +216,8 @@ long long Gobang_AI::cal(point &step,int R, int L, int count,int *RIGHT,int *LEF
 		}
 		else if (L == NONE || R == NONE)//两边断开位置只有一个空
 		{
-			if (L == BOUD) {//左边被对方堵住
+			if (L == BOUD) 
+			{//左边被对方堵住
 				if (R1 == BOUD)//右边也被对方堵住
 					return NOTHREAT;
 				if (R1 == NONE)//右边均空
@@ -177,8 +237,8 @@ long long Gobang_AI::cal(point &step,int R, int L, int count,int *RIGHT,int *LEF
 		}
 	}
 
-	if (count == 2) {//中心线2连
-
+	if (count == 2) 
+	{//中心线2连
 		if (L == NONE && R == NONE)//两边断开位置均空
 		{
 			if ((R1 == NONE && R2 == step.color) ||
@@ -297,6 +357,9 @@ long long Gobang_AI::evaluate(point& step)
 	long long score = 0;
 	int RIGHT[3], LEFT[3];//此数组储存的是该连珠域外左右各三个子的情况,左边为前三个
 	int L, R;//储存左右两头分别是什么
+	situation Record;
+
+
 	//向下进行检查
 	point tem = step;
 	int count = 1;
@@ -316,7 +379,7 @@ long long Gobang_AI::evaluate(point& step)
 		R = NONE;
 	else R = BOUD;
 	getchess(tem, -1, 0, RIGHT);
-	score += cal(step, R, L, count, RIGHT, LEFT);
+	score += Record.add(cal(step, R, L, count, RIGHT, LEFT));
 
 	//向左进行检查
 	count = 1;
@@ -337,7 +400,7 @@ long long Gobang_AI::evaluate(point& step)
 		R = NONE;
 	else R = BOUD;
 	getchess(tem, 0, 1, RIGHT);
-	score += cal(step, R, L, count, RIGHT, LEFT);
+	score += Record.add(cal(step, R, L, count, RIGHT, LEFT));
 
 
 	//向左上
@@ -359,7 +422,7 @@ long long Gobang_AI::evaluate(point& step)
 		R = NONE;
 	else R = BOUD;
 	getchess(tem, 1, 1, RIGHT);
-	score += cal(step, R, L, count, RIGHT, LEFT);
+	score += Record.add(cal(step, R, L, count, RIGHT, LEFT));
 
 
 	//向右上
@@ -381,9 +444,9 @@ long long Gobang_AI::evaluate(point& step)
 		R = NONE;
 	else R = BOUD;
 	getchess(tem, 1, -1, RIGHT);
-	score += cal(step, R, L, count, RIGHT, LEFT);
+	score += Record.add(cal(step, R, L, count, RIGHT, LEFT));
 
-
+	score += Record.weight();
 
 	return score;
 }

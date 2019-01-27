@@ -86,14 +86,8 @@ void Map::flash_borad(void)
 	}
 	memcpy(MAP_clone, MAP, sizeof(MAP));
 	gotoxy(0, 20);
-	printf("                                       \n");
-	printf("                                       \n");
-	printf("                                       \n");
-	printf("                                       \n");
-	printf("                                       \n");
-	printf("                                       \n");
-	printf("                                       \n");
-	printf("                                       \n");
+	for(int i=0;i<20;i++)
+		printf("                                       \n");
 	gotoxy(0, 20);
 
 }

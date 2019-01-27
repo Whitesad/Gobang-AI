@@ -52,6 +52,9 @@ int main()
 			break;
 		}
 		Chess_board.flash_borad();
+		gotoxy(0, 25);
+		printf("r=%d c=%d", step.x, step.y);
+		gotoxy(0, 21);
 	} while (!Chess_board.isend(step));
 	if (round == Player)
 		puts("Your lose is decided by steins gate!");
