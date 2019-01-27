@@ -41,6 +41,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "源文件", "源文件", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "三角棋练习题", "三角棋练习题", "{CF401E03-DF57-4060-91DE-7DABED3FF517}"
 	ProjectSection(SolutionItems) = preProject
+		tem_copy.cpp = tem_copy.cpp
 		Triangle.cpp = Triangle.cpp
 	EndProjectSection
 EndProject

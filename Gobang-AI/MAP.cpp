@@ -5,18 +5,19 @@ Map::Map()
 	memset(MAP_clone, NONE, sizeof(MAP_clone));
 	black_point = 0, white_point = 0;
 }
-bool Map::isend(point step,int color)
+bool Map::isend(point step)
 {
+	step.color = MAP[step.x][step.y];
 	//向下进行检查
 	point tem = step;
 	int line = 1;
 	tem.x++;
-	while (tem.judge() && MAP[tem.x][tem.y] == color)
+	while (tem.judge() && MAP[tem.x][tem.y] == step.color)
 		tem.x++, line++;
 	//向上进行检查
 	tem = step;
 	tem.x--;
-	while (tem.judge() && MAP[tem.x][tem.y] == color)
+	while (tem.judge() && MAP[tem.x][tem.y] == step.color)
 		tem.x--,line++;
 	if (line >= 5)
 		return true;
@@ -25,12 +26,12 @@ bool Map::isend(point step,int color)
 	line = 1;
 	tem = step;
 	tem.y--;
-	while (tem.judge() && MAP[tem.x][tem.y] == color)
+	while (tem.judge() && MAP[tem.x][tem.y] == step.color)
 		tem.y--, line++;
 	//向右进行检查
 	tem = step;
 	tem.y++;
-	while (tem.judge() && MAP[tem.x][tem.y] == color)
+	while (tem.judge() && MAP[tem.x][tem.y] == step.color)
 		tem.y++, line++;
 	if (line >= 5)
 		return true;
@@ -39,12 +40,12 @@ bool Map::isend(point step,int color)
 	line = 1;
 	tem = step;
 	tem.x--, tem.y--;
-	while (tem.judge() && MAP[tem.x][tem.y] == color)
+	while (tem.judge() && MAP[tem.x][tem.y] == step.color)
 		tem.x--,tem.y--,line++;
 	//向右下
 	tem = step;
 	tem.x++, tem.y++;
-	while (tem.judge() && MAP[tem.x][tem.y] == color)
+	while (tem.judge() && MAP[tem.x][tem.y] == step.color)
 		tem.x++, tem.y++, line++;
 	if (line >= 5)
 		return true;
@@ -53,12 +54,12 @@ bool Map::isend(point step,int color)
 	line = 1;
 	tem = step;
 	tem.x--, tem.y++;
-	while (tem.judge() && MAP[tem.x][tem.y] == color)
+	while (tem.judge() && MAP[tem.x][tem.y] == step.color)
 		tem.x--, tem.y++, line++;
 	//向左下
 	tem = step;
 	tem.x++, tem.y--;
-	while (tem.judge() && MAP[tem.x][tem.y] == color)
+	while (tem.judge() && MAP[tem.x][tem.y] == step.color)
 		tem.x++, tem.y--, line++;
 	if (line >= 5)
 		return true;
@@ -96,7 +97,7 @@ void Map::flash_borad(void)
 	gotoxy(0, 20);
 
 }
-void Map::set(point step, int color)
+void Map::set(point step)
 {
-	MAP[step.x][step.y] = color;
+	MAP[step.x][step.y] = step.color;
 }

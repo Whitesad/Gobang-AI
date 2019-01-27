@@ -16,7 +16,7 @@ using namespace std;
 
 //预定义工程头文件区
 #include "start.h"
-#include "Kizuna.h"
+#include "Christina.h"
 #include "MAP.h"
 
 //预定义类型区
@@ -29,9 +29,9 @@ enum Round {
 #define NONE 0
 #define WHITE 1
 #define BLACK 2
-
+#define BOUD 4
 
 //预定义常量
-#define LEN 16
+#define LEN 17
 
 //预定义数据

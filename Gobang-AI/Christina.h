@@ -1,6 +1,7 @@
 #pragma once
-#ifndef _KIZUNA_H_
-#define _KIZUNA_H_
+#ifndef _CHRISTINA_H_
+#define _CHRISTINA_H_
+
 struct point
 {
 	point(void) {/**/ }
@@ -18,6 +19,7 @@ struct point
 		return false;
 	}
 	int x, y;
+	int color;
 };
 class Gobang_AI
 {
@@ -26,7 +28,12 @@ public:
 	void getchess(point chess);
 	point play_chess(point player);
 private:
+	long long evaluate(point& step);
+	long long cal(point &step,int R, int L, int count, int *RIGHT, int *LEFT);
+	void getchess(point &step, int fr, int fc, int *chess);//作为补全连珠域外棋子的函数存在
+	point *generate_way(void);
 	point analyse_point;
+	point WAY[255];
 };
 
 #endif // !_START_H_

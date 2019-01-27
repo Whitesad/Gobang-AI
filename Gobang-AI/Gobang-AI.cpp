@@ -1,8 +1,9 @@
 ﻿// Gobang-AI.cpp : 
 //2019 1 15 AI开工
-#define DEBUGS
+#define DEBU
 #include "define.h"
 Map Chess_board;
+Gobang_AI Christina;
 int main()
 {
 #ifdef DEBUG
@@ -13,7 +14,6 @@ int main()
 	Chessboard();//打印棋盘
 	enum select SELECT = get_select();//获得玩家输入
 	Round round;
-	Gobang_AI Kizuna;
 	int player_color, AI_color;
 	while (SELECT == erro)
 		SELECT = get_select();
@@ -21,11 +21,9 @@ int main()
 	{
 	case player_first:
 		round = Round::Player;
-		player_color = BLACK, AI_color = WHITE;
 		break;
 	case computer_first:
 		round = Round::AI;
-		player_color = WHITE, AI_color = BLACK;
 		break;
 	case erro:
 		puts("Illegal input!");
@@ -34,29 +32,32 @@ int main()
 	}
 	point step;
 	if (SELECT == computer_first)
-		step.x = step.y = 7;
+		step.x = step.y = 7,step.color=WHITE;
 	else
-		step.x = step.y = 0;
-	int color = WHITE;
-	while (!Chess_board.isend(step,color))
+		step.x = step.y = 0,step.color=BLACK;
+	do
 	{
 		switch (round)
 		{
 		case Player:
 			step.get();
 			round = AI;
-			Chess_board.set(step, player_color);
+			Chess_board.set(step);
 			break;
 		case AI:
-			step=Kizuna.play_chess(step);
-			Chess_board.set(step, AI_color);
+			step=Christina.play_chess(step);
+			Chess_board.set(step);
+			step.color = (step.color == WHITE ? BLACK : WHITE);
 			round = Player;
-			break;
-		default:
 			break;
 		}
 		Chess_board.flash_borad();
-		color = (color == WHITE ? BLACK : WHITE);
-	}
+	} while (!Chess_board.isend(step));
+	if (round == Player)
+		puts("Your lose is decided by steins gate!");
+	else
+		puts("Your win is decided by steins gate!");
+	getchar();
 	return 0;
 }
+ 

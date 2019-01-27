@@ -9,9 +9,9 @@ class Map
 {
 public:
 	Map();
-	bool isend(point step,int color);
+	bool isend(point step);
 	void flash_borad(void);
-	void set(point step,int color);
+	void set(point step);
 	char MAP[LEN][LEN];
 	char MAP_clone[LEN][LEN];
 private:
