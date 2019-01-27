@@ -18,6 +18,24 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\define.h" />
+    <ClInclude Include="..\Kizuna.h" />
+    <ClInclude Include="..\MAP.h" />
+    <ClInclude Include="..\start.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Gobang-AI.cpp" />
+    <ClCompile Include="..\Kizuna.cpp" />
+    <ClCompile Include="..\MAP.cpp" />
+    <ClCompile Include="..\start.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\READ ME.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="int.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{3026DC64-C960-43AC-9966-11AFD307E493}</ProjectGuid>
@@ -150,12 +168,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Gobang-AI.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\READ ME.md" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

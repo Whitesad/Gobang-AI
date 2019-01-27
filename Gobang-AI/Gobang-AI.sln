@@ -28,6 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "头文件", "头文件", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "源文件", "源文件", "{CCCD60F9-40BE-456D-84B6-50D35092D65A}"
 	ProjectSection(SolutionItems) = preProject
+		..\五子棋框架\源文件\AI实例.cpp = ..\五子棋框架\源文件\AI实例.cpp
 		..\五子棋框架\源文件\createmoves.cpp = ..\五子棋框架\源文件\createmoves.cpp
 		..\五子棋框架\源文件\define.cpp = ..\五子棋框架\源文件\define.cpp
 		..\五子棋框架\源文件\evaluate.cpp = ..\五子棋框架\源文件\evaluate.cpp
