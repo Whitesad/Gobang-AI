@@ -1,1 +1,2 @@
-newblack
+newwhite
+8 8

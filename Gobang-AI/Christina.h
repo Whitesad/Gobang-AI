@@ -18,9 +18,13 @@ struct point
 			return true;
 		return false;
 	}
+	void chagecolor(void);
 	int x, y;
 	int color;
 };
+//关于alpha beta的宏
+#define INF 0x3f3f3f3f
+#define MAXDEEP 3
 
 //棋子情况
 #define WIN5 100000
@@ -78,6 +82,9 @@ struct situation
 	int tiao3;
 };
 
+enum Angle {
+	ME,YOU
+};
 
 class Gobang_AI
 {
@@ -86,6 +93,7 @@ public:
 	void getchess(point chess);
 	point play_chess(point player);
 private:
+	long long Alpha_beta(Angle angle,int deep, long long alpha, long long beta, point step,point* head);
 	long long evaluate(point& step);
 	long long cal(point &step,int R, int L, int count, int *RIGHT, int *LEFT);
 	void getchess(point &step, int fr, int fc, int *chess);//作为补全连珠域外棋子的函数存在
