@@ -14,13 +14,10 @@ public:
 	void set(point step);
 	char MAP[LEN][LEN];
 	char MAP_clone[LEN][LEN];
-	void Makemove(point step);
+	void Makemove(point step,int color);
 	void Unmakemove(point step);
 private:
 	int black_point;
 	int white_point;
 };
-
-
-
 #endif // !_MAP_H_

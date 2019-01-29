@@ -19,6 +19,7 @@ struct point
 		return false;
 	}
 	void chagecolor(void);
+	int re_color(void);
 	int x, y;
 	int color;
 };
@@ -29,10 +30,10 @@ struct point
 //棋子情况
 #define WIN5 100000
 #define ALIVE4 10000
-#define DIE4 500
+#define DIE4 800
 #define DIE3  250
 #define LOWDIE4 200
-#define ALIVE3 1000
+#define ALIVE3 1500
 #define ALIVE2 10
 #define NOTHREAT 1
 #define TIAO3 90
@@ -97,9 +98,12 @@ private:
 	long long evaluate(point& step);
 	long long cal(point &step,int R, int L, int count, int *RIGHT, int *LEFT);
 	void getchess(point &step, int fr, int fc, int *chess);//作为补全连珠域外棋子的函数存在
-	point *generate_way(void);
+	long long ENUM(int color,point *head);
+	int generate_way(void);
 	point analyse_point;
 	point WAY[255];
+	point best_step;
+	situation record;
 };
 
 #endif // !_START_H_

@@ -95,8 +95,8 @@ void Map::set(point step)
 {
 	MAP[step.x][step.y] = step.color;
 }
-void Map::Makemove(point step) {
-	MAP[step.x][step.y] = step.color;
+void Map::Makemove(point step,int color) {
+	MAP[step.x][step.y] = color;
 }
 void Map::Unmakemove(point step) {
 	MAP[step.x][step.y] = NONE;
