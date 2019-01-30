@@ -30,7 +30,7 @@ struct point
 //棋子情况
 #define WIN5 100000
 #define ALIVE4 10000
-#define DIE4 1000
+#define DIE4 800
 #define DIE3  250
 #define LOWDIE4 200
 #define ALIVE3 1500
@@ -48,7 +48,7 @@ struct point
 #define Levelsix 200
 #define Levelseven 100
 #define LevelEight 50
-#define LevelNine 400
+#define LevelNine 100
 #define LevelTen 20
 #define LevelEleven 10
 #define LevelTwelve 5
@@ -94,12 +94,15 @@ public:
 	void getchess(point chess);
 	point play_chess(point player);
 private:
+	long long Alpha_beta(Angle angle,int deep, long long alpha, long long beta, point step,point* head);
 	long long evaluate(point& step);
 	long long cal(point &step,int R, int L, int count, int *RIGHT, int *LEFT);
 	void getchess(point &step, int fr, int fc, int *chess);//作为补全连珠域外棋子的函数存在
+	long long ENUM(int color,point *head);
 	int generate_way(void);
 	point analyse_point;
 	point WAY[255];
+	point best_step;
 	situation record;
 };
 

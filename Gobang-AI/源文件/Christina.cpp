@@ -93,9 +93,6 @@ long long situation::weight(void)
 	if (alive2 >= 2)
 		result = MAX(result, LevelNine);//双活2
 
-	if (alive2 >= 3)
-		result = MAX(result, 1000);//三活二
-
 	if (alive2 >= 1)
 		result = MAX(result, LevelTen);//活2
 
@@ -114,17 +111,16 @@ long long situation::weight(void)
 }
 
 //初始版本
-//初始版本
 struct point Gobang_AI::play_chess(point player)
 {
 	//将玩家的棋子赋予给待分析棋子
 	analyse_point = player;
-	point atack_result, defend_result;
+	point atack_result,defend_result;
 	generate_way();
-	point *atack = WAY;
+	point *atack=WAY;
 	point *defend = atack;
 	long long score;
-	long long ATACK_MAX = 0;
+	long long ATACK_MAX=0;
 	while (atack->x)
 	{
 		score = evaluate((*atack));
@@ -132,8 +128,6 @@ struct point Gobang_AI::play_chess(point player)
 			return (*atack);
 		if (record.alive4 >= 1)
 			score = score * 10;
-		if (record.die4 >= 1)
-			score += 1500;
 		if (score > ATACK_MAX)
 		{
 			atack_result = (*atack);
@@ -148,7 +142,7 @@ struct point Gobang_AI::play_chess(point player)
 	}
 
 
-	long long DEFEND_MAX = 0;
+	long long DEFEND_MAX=0;
 	while (defend->x)
 	{
 		point tem = (*defend);
@@ -174,7 +168,202 @@ struct point Gobang_AI::play_chess(point player)
 		return defend_result;
 }
 
+/*long long Gobang_AI::ENUM(int color,point *head)
+{
+	long long MAX = -INF;
+	long long score;
+	while (head->x)
+	{
+		point tem = (*head);
+		tem.color = color;
+		Chess_board.Makemove(tem);
+		score = evaluate(tem);
+		Chess_board.Unmakemove(tem);
+		if (score > MAX)
+			MAX = (long long)(1.0*score*PosValue[tem.x-1][tem.y-1]);
+		head++;
+	}
+	return MAX;
+}
+*/
+/*
+struct point Gobang_AI::play_chess(point player)
+{
+	int count = generate_way();
+	long long score_1,score_2,score_3;
+	long long ATACK_MAX = -INF;
+	point atack_step, defend_step;
+	for (int i = 0; i < count - 2; i++)
+	{
+		Chess_board.Makemove(WAY[i], WAY[i].color);
+		score_1 = 10*evaluate(WAY[i]);
+		for (int j = i+1; j < count - 1; j++)
+		{
+			point tem = WAY[j]; tem.chagecolor();
+			Chess_board.Makemove(tem,tem.color);
+			score_2 = score_1 - 5*evaluate(tem);
 
+			for (int k = j + 1; k < count; k++)
+			{
+				Chess_board.Makemove(WAY[k], WAY[k].color);
+				score_3 =  score_2+evaluate(WAY[k]);
+				if (score_3 > ATACK_MAX)
+				{
+					atack_step = WAY[i];
+					ATACK_MAX = score_3;
+				}
+				Chess_board.Unmakemove(WAY[k]);
+			}
+			Chess_board.Unmakemove(WAY[j]);
+		}
+		Chess_board.Unmakemove(WAY[i]);
+	}
+
+	long long DEFEND_MAX = -INF;
+	for (int i = 0; i < count - 2; i++)
+	{
+		point tem = WAY[i]; tem.chagecolor();
+		Chess_board.Makemove(tem, tem.color);
+		score_1 = 10*evaluate(WAY[i]);
+
+		for (int j = i + 1; j < count - 1; j++)
+		{
+			Chess_board.Makemove(WAY[j], WAY[j].color);
+			score_2 = score_1 - 5*evaluate(tem);
+
+			for (int k = j + 1; k < count; k++)
+			{
+				Chess_board.Makemove(WAY[k], tem.color);
+				score_3 = score_2+ evaluate(WAY[k]);
+				if (score_3 > DEFEND_MAX)
+				{
+					defend_step= WAY[i];
+					DEFEND_MAX = score_3;
+				}
+				Chess_board.Unmakemove(WAY[k]);
+			}
+			Chess_board.Unmakemove(WAY[j]);
+		}
+		Chess_board.Unmakemove(WAY[i]);
+	}
+	
+	if (DEFEND_MAX > ATACK_MAX)
+		return defend_step;
+	else
+		return atack_step;
+
+	return best_step;
+}
+*/
+
+/*
+//加深的贪心
+struct point Gobang_AI::play_chess(point player)
+{
+	point defend_result, atack_result;
+	generate_way();
+	point *head = WAY;
+	long long MAX = -INF;
+
+	long long score;
+	while (head->x)
+	{
+		Chess_board.Makemove((*head));//落子
+		score = evaluate((*head));
+		score = (long long)(1.0*score*PosValue[head->x - 1][head->y - 1]);
+		score = (long long)(1.5*score);
+
+		long long min = ENUM((head->re_color()), head + 1);//枚举下一步对方棋的最大值
+		Chess_board.Unmakemove((*head));//撤子
+		score = score - min;//用玩家得分减去对方得分
+		if (score > MAX) {
+			atack_result = (*head);
+			MAX = score;
+		}
+		head++;
+	}
+
+	head = WAY;
+	long long DEFEND_MAX = 0;
+	while ((head + 2)->x)
+	{
+		point tem = (*head);
+		tem.chagecolor();
+		Chess_board.Makemove(tem);//落子
+		score = evaluate(tem);
+		score = (long long)(1.0*score*PosValue[head->x - 1][head->y - 1]);
+		score = (long long)(1.5*score);
+		long long min = ENUM(tem.re_color(), head + 1);//枚举下一步对方棋的最大值
+		Chess_board.Unmakemove(tem);//撤子
+		score = score - min;//用玩家得分减去对方得分
+		if (score > MAX) {
+			defend_result = (*head);
+			MAX = score;
+		}
+		head++;
+	}
+
+	if (DEFEND_MAX > MAX)
+		return defend_result;
+	else
+		return atack_result;
+}
+*/
+/*
+随机落子器
+srand((time(0)));
+point result = player;
+result.x = player.x+(rand() % 2), result.y = player.y+(rand() % 2);
+while (!player.judge()||Chess_board.MAP[result.x][result.y]!=NONE  )
+	result.x = player.x + (rand() % 2), result.y = player.y + (rand() % 2);*/
+
+/*
+//基于Alpha beta的play chess
+struct point Gobang_AI::play_chess(point player)
+{
+	//将玩家的棋子赋予给待分析棋子
+	analyse_point = player;
+	point atack_result, defend_result;
+	point *atack = generate_way();
+	point *defend = atack;
+	long long score;
+	long long ATACK_MAX = 0;
+	while (atack->x)
+	{
+		Chess_board.Makemove((*atack));
+		score = Alpha_beta(Angle::YOU, 1,-INF,INF,(*atack),atack+1);
+		score = (long long)(1.0*score*PosValue[atack->x - 1][atack->y - 1]);
+		Chess_board.Unmakemove((*atack));
+		if (score > ATACK_MAX)
+		{
+			atack_result = (*atack);
+			ATACK_MAX = score;
+		}
+		atack++;
+	}
+	long long DEFEND_MAX = 0;
+	while (defend->x*defend->y != 0)
+	{
+		Chess_board.Makemove((*defend));
+		point tem = (*defend);
+		tem.chagecolor();
+		score = Alpha_beta(Angle::ME,1,-INF,INF,(*defend),defend+1);
+		score = (long long)(1.0*score*PosValue[tem.x - 1][tem.y - 1]);
+		Chess_board.Unmakemove((*defend));
+		if (score > DEFEND_MAX)
+		{
+			defend_result = (*defend);
+			DEFEND_MAX = score;
+		}
+		defend++;
+	}
+	if (ATACK_MAX > DEFEND_MAX)
+		return atack_result;
+	else
+		return defend_result;
+	return atack_result;
+}
+*/
 int Gobang_AI::generate_way(void)
 {
 	memset(WAY, 0, sizeof(WAY));//初始化
@@ -482,3 +671,55 @@ long long Gobang_AI::evaluate(point& step)
 	score = (long long)(1.0*score*PosValue[step.x - 1][step.y - 1]);
 	return score;
 }
+
+/*
+//基于Alpha beta的play chess
+struct point Gobang_AI::play_chess(point player)
+{
+	generate_way();
+	Alpha_beta(Angle::ME, 0, -INF, INF, WAY[0], WAY);
+	return best_step;
+}*/
+/*
+long long Gobang_AI::Alpha_beta(Angle angle,int deep, long long alpha, long long beta, point step,point* head) 
+{
+	//alpha记录的是MAX方的最优情况，beta记录的是MIN方的最优情况
+	if (deep >= MAXDEEP)
+		return evaluate(step);
+	if (angle==ME)
+	{
+		while (head->x)
+		{
+			point next_step = (*head);
+			Chess_board.Makemove(next_step);
+			long long val = Alpha_beta(Angle::YOU,deep + 1, alpha, beta, next_step, head+1);
+			Chess_board.Unmakemove(next_step);
+			if (val > alpha) {
+				best_step = (*head);
+				alpha = val;
+			}
+			if (alpha >= beta)
+				return alpha;
+			head++;
+		}
+		return alpha;
+	}
+	else
+	{
+		while (head->x)
+		{
+			point next_step = (*head);
+			next_step.color = (*head).re_color();
+			Chess_board.Makemove(next_step);
+			long long val = Alpha_beta(Angle::ME,deep + 1, alpha, beta, next_step, head + 1);
+			Chess_board.Unmakemove(next_step);
+			if (val < beta)
+				beta = val;
+			if (alpha >= beta)
+				return beta;
+			head++;
+		}
+		return beta;
+	}
+}
+*/
